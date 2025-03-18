@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@theme {
+    --color-surfgreen: #55DFB8;
+}
