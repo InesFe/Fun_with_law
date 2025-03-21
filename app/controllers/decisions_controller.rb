@@ -6,7 +6,7 @@ class DecisionsController < ApplicationController
   def create
     @decision = Decision.new(decision_params)
     if @decision.save
-      redirect_to decisions_path(@decision), notice: "Décision crée et ajoutée à la liste"
+      redirect_to decision_path(@decision), notice: "Décision crée et ajoutée à la liste"
     else
       render :new, status: :unprocessable_entity
     end
@@ -14,6 +14,19 @@ class DecisionsController < ApplicationController
 
   def show
     @decision = Decision.find(params[:id])
+  end
+
+  def edit
+    @decision = Decision.find(params[:id])
+  end
+
+  def update
+    @decision = Decision.find(params[:id])
+    if @decision.update(decision_params)
+      redirect_to decision_path(@decision), notice: "Décision modifiée"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
