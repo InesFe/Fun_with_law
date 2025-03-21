@@ -2,3 +2,9 @@
 @theme {
     --color-surfgreen: #55DFB8;
 }
+
+@layer components {
+  .card-border {
+    border: 4px solid #4a5568; /* Gray-700 */
+  }
+}

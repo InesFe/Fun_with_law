@@ -1,20 +1,36 @@
-<h1>Liste des décisions à connaître</h1>
+<h1 class="text-3xl font-serif mb-6 text-center">Liste des décisions à connaître</h1>
 
-<table>
-    <tr> Nom </tr>
-    <tr> Chapitre </tr>
-    <tr> Année </tr>
-    <tr> Résumé </tr>
-
-    <% @decisions.each do |decision| %>
-    <tr>
-        <td> <%= decision.name %> </td>
-        <td> <%= decision.chapter %></td>
-        <td> <%= decision.date %> </td>
-        <td> <%= decision.summary %> </td>
-        <td><%= link_to "Voir cette décision", decision%></td>
-    </tr>
-    <% end %>
-</table>
-
-<%= link_to "Ajouter une décision", new_decision_path %>
+<div class="degrade-horizontal flex justify-center items-center min-h-screen p-6">
+  <div class="bg-white card-border rounded-xl shadow-2xl p-8 w-full max-w-4xl transform hover:scale-105 transition duration-300 ease-in-out">
+    
+    <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Nom</th>
+          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Chapitre</th>
+          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Année</th>
+          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Résumé</th>
+          <th class="py-3 px-6 text-left text-gray-700 font-semibold"></th>
+          <th class="py-3 px-6 text-left text-gray-700 font-semibold"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @decisions.each do |decision| %>
+          <tr class="border-t border-gray-300 hover:bg-gray-50">
+            <td class="py-2 px-6"><%= decision.name %></td>
+            <td class="py-2 px-6"><%= decision.chapter %></td>
+            <td class="py-2 px-6"><%= decision.date %></td>
+            <td class="py-2 px-6"><%= decision.summary %></td>
+            <td class="py-2 px-6"><%= link_to "Voir cette décision", decision, class: "text-blue-600 hover:text-blue-800" %></td>
+            <td class="py-2 px-6">
+              <%= button_to "Supprimer", decision_path(decision), method: :delete, class: "text-blue-600 hover:text-blue-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    <%= link_to "Home", root_path, class: "bg-surfgreen text-black font-serif py-2 px-4 rounded-lg hover:bg-indigo-700 inline-block" %>
+  
+  </div>
+</div>

@@ -33,6 +33,12 @@ class DecisionsController < ApplicationController
     @decisions = Decision.all
   end
 
+  def destroy
+    @decision = Decision.find(params[:id])
+    @decision.destroy
+    redirect_to decisions_path, alert: "Décision supprimée de la liste"
+  end
+
   private
     def decision_params
       params.expect(decision: [ :chapter, :name, :date, :summary ])
