@@ -29,6 +29,10 @@ class DecisionsController < ApplicationController
     end
   end
 
+  def index
+    @decisions = Decision.all
+  end
+
   private
     def decision_params
       params.expect(decision: [ :chapter, :name, :date, :summary ])

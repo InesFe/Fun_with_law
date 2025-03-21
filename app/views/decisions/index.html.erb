@@ -1,0 +1,20 @@
+<h1>Liste des décisions à connaître</h1>
+
+<table>
+    <tr> Nom </tr>
+    <tr> Chapitre </tr>
+    <tr> Année </tr>
+    <tr> Résumé </tr>
+
+    <% @decisions.each do |decision| %>
+    <tr>
+        <td> <%= decision.name %> </td>
+        <td> <%= decision.chapter %></td>
+        <td> <%= decision.date %> </td>
+        <td> <%= decision.summary %> </td>
+        <td><%= link_to "Voir cette décision", decision%></td>
+    </tr>
+    <% end %>
+</table>
+
+<%= link_to "Ajouter une décision", new_decision_path %>
