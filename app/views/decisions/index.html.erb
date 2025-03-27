@@ -1,6 +1,7 @@
-<h1 class="text-3xl font-serif mb-6 text-center">Liste des décisions à connaître</h1>
-
 <div class="degrade-horizontal flex justify-center items-center min-h-screen p-6">
+
+  <h1 class="neon text-3xl font-serif bold">Liste des décisions à connaître</h1>
+  
   <div class="bg-white card-border rounded-xl shadow-2xl p-8 w-full max-w-4xl transform hover:scale-105 transition duration-300 ease-in-out">
     
     <table class="min-w-full bg-white border border-gray-300 rounded-lg">
@@ -21,9 +22,9 @@
             <td class="py-2 px-6"><%= decision.chapter %></td>
             <td class="py-2 px-6"><%= decision.date %></td>
             <td class="py-2 px-6"><%= decision.summary %></td>
-            <td class="py-2 px-6"><%= link_to "Voir cette décision", decision, class: "text-blue-600 hover:text-blue-800" %></td>
+            <td class="py-2 px-6"><%= link_to "Voir la décision", decision, class: "text-blue-600 hover:text-blue-800" %></td>
             <td class="py-2 px-6">
-              <%= button_to "Supprimer", decision_path(decision), method: :delete, class: "text-blue-600 hover:text-blue-800" %>
+              <%= button_to "Supprimer", decision_path(decision), method: :delete, data: { turbo_confirm: "Etes-vous sûr?"}, class: "text-blue-600 hover:text-blue-800" %>
             </td>
           </tr>
         <% end %>
@@ -31,6 +32,6 @@
     </table>
     
     <%= link_to "Home", root_path, class: "bg-surfgreen text-black font-serif py-2 px-4 rounded-lg hover:bg-indigo-700 inline-block" %>
-  
+    <%= link_to "Ajouter une décision", new_decision_path, class: "bg-surfgreen text-black font-serif py-2 px-4 rounded-lg hover:bg-indigo-700 inline-block" %>
   </div>
 </div>

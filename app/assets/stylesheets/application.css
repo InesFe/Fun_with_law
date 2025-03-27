@@ -21,3 +21,8 @@ html, body {
     background-size: cover;
     display: flex;
 }
+
+.helvetica-text {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
