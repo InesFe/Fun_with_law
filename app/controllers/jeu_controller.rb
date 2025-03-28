@@ -50,5 +50,40 @@ class JeuController < ApplicationController
   end
 
   def submit
+    # Retrieve questions and current_question_index from session
+    @questions = session[:questions]
+    @current_question_index = session[:current_question_index] || 0
+    @current_question = @questions[@current_question_index]
+
+    correct_answer_id = session[:correct_answer_ids][@current_question_index].to_i
+    # Check if the user has submitted an answer
+    if params[:question].present? && params[:question][:answer_id].present?
+      # Convert the submitted answer ID to an integer for comparison
+      submitted_answer_id = params[:question][:answer_id].to_i
+
+      # Check if the submitted answer ID matches the correct answer ID
+      if submitted_answer_id == correct_answer_id
+        redirect_to jeu_correct_answer_path
+      else
+        correct_decision = Decision.find(correct_answer_id)
+        redirect_to jeu_wrong_answer_path(correct_decision: correct_decision)
+      end
+      # Move to the next question
+      session[:current_question_index] += 1
+
+    else
+      # Handle case when no answer is submitted
+      flash[:error] = "Merci de choisir une réponse"
+      redirect_to jeu_index_path
+    end
+    Rails.logger.info("Correct answer ID: ")
+    Rails.logger.info("Submitted answer ID: #{submitted_answer_id}")
+  end
+
+  def correct_answer
+  end
+
+  def wrong_answer
+    @correct_decision = Decision.find(params[:correct_decision]) if params[:correct_decision]
   end
 end
