@@ -15,7 +15,7 @@ html, body {
 } 
 
 .degrade-horizontal {
-    background: linear-gradient(to left, #73C2FB, #26619C);
+    background: linear-gradient( #73C2FB, #26619C);
     height: 100vh;
     width: 100vw;
     background-size: cover;

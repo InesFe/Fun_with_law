@@ -1,12 +1,30 @@
 class JeuController < ApplicationController
   def index
-    @decisions = Decision.all.shuffle
+    if params[:chapter].present?
+      session[:selected_chapter] = params[:chapter]
+    end
+
+    if session[:selected_chapter].present?
+      @decisions = Decision.where(chapter: session[:selected_chapter]).shuffle
+    else
+      @decisions = Decision.all.shuffle
+    end
+
+    # if params[:chapter].present?
+    # session[:selected_chapter] = params[:chapter]
+    # session[:filtered_decisions] = Decision.where(chapter: params[:chapter]).pluck(:id)
+    # @decisions = Decision.where(id: session[:filtered_decisions]).shuffle
+    # else
+    # session[:selected_chapter] = nil
+    # @decisions = Decision.all.shuffle
+    # end
+    Rails.logger.info("Filtered Decisions: #{@decisions.inspect}")
     @questions = []
     question_type = rand(1..3)
       case question_type
       when 1
         decision = @decisions.pop
-        options = Decision.where.not(id: decision.id).sample(2)
+        options = @decisions.sample(2)
         options << decision
         options.shuffle!
         correct_answer_id = decision.id
@@ -18,7 +36,7 @@ class JeuController < ApplicationController
         }
       when 2
         decision = @decisions.pop
-        options = Decision.where.not(id: decision.id).sample(2)
+        options = @decisions.sample(2)
         options << decision
         options.shuffle!
         correct_answer_id = decision.id
@@ -30,7 +48,7 @@ class JeuController < ApplicationController
         }
       when 3
         decision = @decisions.pop
-        options = Decision.where.not(id: decision.id).sample(2)
+        options = @decisions.sample(2)
         options << decision
         options.shuffle!
         correct_answer_id = decision.id

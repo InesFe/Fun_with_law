@@ -3,5 +3,6 @@ class HomeController < ApplicationController
   end
 
   def level
+    session.delete(:selected_chapter)
   end
 end
