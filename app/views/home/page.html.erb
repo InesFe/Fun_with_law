@@ -1,15 +1,22 @@
 <div class="degrade-horizontal w-full h-screen flex items-center justify-center">
   <div class="space-y-4 text-center">
-    <h1 class="neon helvetica-text text-3xl font-serif bold">BIENVENUE</h1>
+    <h1 class="neon helvetica-text text-3xl font-serif bold">FUN WITH LAW</h1>
+    <h1 class=font-semibold> Révisez les grands arrêts du droit administratif ! </h1>
 
     <div>
-      <button class="bg-surfgreen helvetica-text text-black py-2 px-4 rounded-lg hover:bg-indigo-700">
+      <%= link_to "Jouer", home_level_path, class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
+    </div>
+   
+    <div>
+      <button class="bg-surfgreen helvetica-text text-black py-2 px-4 rounded-2xl hover:bg-darksurfgreen">
         <%= link_to "Réviser", decisions_path %>
       </button>
     </div>
 
     <div>
-      <%= link_to "Jouer", home_level_path, class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-lg hover:bg-indigo-700 inline-block" %>
+    <%= link_to "🖤 Faire un don", "https://www.buymeacoffee.com/",
+    class: "inline-block bg-surfgreen hover:bg-darksurfgreen text-black font-semibold py-2 px-4 rounded-2xl shadow-md transition duration-300", 
+    target: "_blank", rel: "noopener" %>
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @theme {
     --color-surfgreen: #55DFB8;
+    --color-darksurfgreen: #3BCFA1;
 }
 
 @layer components {
