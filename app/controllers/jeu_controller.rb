@@ -2,6 +2,8 @@ class JeuController < ApplicationController
   def index
     if params[:chapter].present?
       session[:selected_chapter] = params[:chapter]
+      session[:score] = 0
+      session[:compteur_questions] = 0
     end
 
     if session[:selected_chapter].present?
@@ -10,14 +12,6 @@ class JeuController < ApplicationController
       @decisions = Decision.all.shuffle
     end
 
-    # if params[:chapter].present?
-    # session[:selected_chapter] = params[:chapter]
-    # session[:filtered_decisions] = Decision.where(chapter: params[:chapter]).pluck(:id)
-    # @decisions = Decision.where(id: session[:filtered_decisions]).shuffle
-    # else
-    # session[:selected_chapter] = nil
-    # @decisions = Decision.all.shuffle
-    # end
     Rails.logger.info("Filtered Decisions: #{@decisions.inspect}")
     @questions = []
     question_type = rand(1..3)
@@ -72,15 +66,19 @@ class JeuController < ApplicationController
     @questions = session[:questions]
     @current_question_index = session[:current_question_index] || 0
     @current_question = @questions[@current_question_index]
+    session[:score] ||= 0
+    session[:compteur_questions] ||= 0
 
     correct_answer_id = session[:correct_answer_ids][@current_question_index].to_i
     # Check if the user has submitted an answer
     if params[:question].present? && params[:question][:answer_id].present?
       # Convert the submitted answer ID to an integer for comparison
       submitted_answer_id = params[:question][:answer_id].to_i
-
+      session[:compteur_questions] += 1
       # Check if the submitted answer ID matches the correct answer ID
       if submitted_answer_id == correct_answer_id
+        session[:score] += 1
+        Rails.logger.info("Le score: #{session[:score]}")
         redirect_to jeu_correct_answer_path
       else
         correct_decision = Decision.find(correct_answer_id)

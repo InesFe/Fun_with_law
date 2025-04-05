@@ -6,6 +6,7 @@
     
     <h3><strong> <%= @correct_decision.name %>, rendu en <%= @correct_decision.date %>, dont l'apport est le suivant : <%= @correct_decision.summary %></strong></h3><br>
   </p>
+  <p>Score: <%= session[:score] %> sur <%= session[:compteur_questions] %></p>
   
     <%= link_to "QUESTION SUIVANTE", jeu_index_path, class: "btn btn btn-lg w-50" %>
   </div>
