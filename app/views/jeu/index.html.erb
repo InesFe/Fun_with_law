@@ -1,15 +1,30 @@
 <div class="degrade-horizontal flex justify-center items-center min-h-screen p-6">
-  <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-xl w-full">
+  
+  <div class="fixed z-50" style="top: 1.75rem; left: 3.5rem;">
+    <%= link_to root_path, class: "inline-block p-2" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-6a1 1 0 01-1-1V11H9v9a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" />
+      </svg>
+    <% end %>
+
+    <%= link_to decisions_path, class: "inline-block p-2" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black hover:text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+    </svg>
+  <% end %>
+  </div>
+
+  <div class= "bg-gray-300 border-4 border-gray-800 rounded-xl shadow-2xl p-8 max-w-xl w-full">
     <% if @questions.present? %>
       <%= form_tag jeu_submit_path, method: :post, local: true, data: { turbo: false } do |form| %>
-        <h2 class="text-2xl font-bold text-center mb-4 text-gray-800"><%= @current_question[:question] %></h2>
-        <hr class="mb-4 border-gray-300">
+        <h2 class="text-2xl helvetica-text font-bold text-center mb-4 text-gray-800"><%= @current_question[:question] %></h2>
+        <hr class="mb-4 border-gray-600">
 
-        <div class="space-y-4">
+        <div class= "space-y-4">
           <% @current_question[:options].each_with_index do |option, index| %>
             <label class="flex items-center space-x-3 bg-gray-100 p-3 rounded-lg cursor-pointer hover:bg-gray-200 transition">
               <%= radio_button_tag "question[answer_id]", option[1], false, id: "option_#{index}", class: "hidden peer" %>
-              <div class="w-5 h-5 border-2 border-gray-400 peer-checked:border-indigo-600 peer-checked:bg-indigo-600 rounded-full flex items-center justify-center">
+              <div class="w-5 h-5 border-2 border-gray-400 peer-checked:bg-surfgreen rounded-full flex items-center justify-center">
                 <div class="w-2.5 h-2.5 bg-white rounded-full peer-checked:block hidden"></div>
               </div>
               <span class="text-gray-700"><%= option[0] %></span>
@@ -17,15 +32,14 @@
           <% end %>
         </div>
 
-        <div class="mt-6">
-          <%= submit_tag "VALIDER", class: "bg-surfgreen hover:bg-indigo-700 text-black font-bold py-3 px-6 rounded-lg w-full transition" %>
+        <div class= "mt-6">
+          <%= submit_tag "VALIDER", class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen w-full inline-block" %>
         </div>
       <% end %>
     <% end %>
 
     <div class="flex justify-between mt-4">
-      <%= link_to "Page Home", root_path, class: "text-indigo-600 hover:underline" %>
-      <%= link_to "Question suivante", jeu_index_path, class: "text-indigo-600 hover:underline" %>
+      <%= link_to "Passer cette question", jeu_index_path, class: "text-black hover:underline" %>
     </div>
   </div>
 </div>

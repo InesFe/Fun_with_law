@@ -1,13 +1,32 @@
-<div class="degrade-horizontal">
-  <div class="center container center-content wrong-answer-page">
-    <h2> 📖 MAUVAISE REPONSE 📘</h2>
+<div class="degrade-horizontal flex items-center justify-center min-h-screen p-6">
+  <div class="fixed z-50" style="top: 1.75rem; left: 3.5rem;">
+    <%= link_to root_path, class: "inline-block p-2" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-6a1 1 0 01-1-1V11H9v9a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" />
+      </svg>
+    <% end %>
 
-      <p><h3>La bonne réponse était : </h3><br>
-    
-    <h3><strong> <%= @correct_decision.name %>, rendu en <%= @correct_decision.date %>, dont l'apport est le suivant : <%= @correct_decision.summary %></strong></h3><br>
-  </p>
-  <p>Score: <%= session[:score] %> sur <%= session[:compteur_questions] %></p>
-  
-    <%= link_to "QUESTION SUIVANTE", jeu_index_path, class: "btn btn btn-lg w-50" %>
+    <%= link_to decisions_path, class: "inline-block p-2" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-black hover:text-gray-600">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+      </svg>
+    <% end %>
   </div>
-</div
+
+  <div class="flex flex-col items-center text-center space-y-6 max-w-3xl">
+    <h2 class="text-3xl helvetica-text">📖 MAUVAISE RÉPONSE 📘</h2>
+      <div class="text-black text-2xl helvetica-text space-y-2">
+        <h3>La bonne réponse était :</h3>
+          <div class="bg-gray-300 p-4 rounded-xl shadow-md border border-gray-800">
+            <p class="text-2xl font-bold"><%= @correct_decision.name %></p>
+            <p class="text-lg italic">Rendu en <%= @correct_decision.date %></p>
+            <p class="mt-2 text-lg"><%= @correct_decision.summary %></p>
+          </div>
+      </div>
+
+      <div class="text-black text-xl helvetica-text">
+        <p>Score : <%= session[:score] %> sur <%= session[:compteur_questions] %></p>
+      </div>
+      <%= link_to "QUESTION SUIVANTE", jeu_index_path, class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen" %>
+  </div>
+</div>
