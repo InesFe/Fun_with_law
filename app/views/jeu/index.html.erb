@@ -14,7 +14,7 @@
   <% end %>
   </div>
 
-  <div class= "bg-gray-300 border-4 border-gray-800 rounded-xl shadow-2xl p-8 max-w-xl w-full">
+  <div class= "bg-gray-200 border-4 border-gray-800 rounded-xl shadow-2xl p-8 max-w-xl w-full">
     <% if @questions.present? %>
       <%= form_tag jeu_submit_path, method: :post, local: true, data: { turbo: false } do |form| %>
         <h2 class="text-2xl helvetica-text font-bold text-center mb-4 text-gray-800"><%= @current_question[:question] %></h2>

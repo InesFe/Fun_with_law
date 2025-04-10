@@ -1,16 +1,16 @@
 <div class="degrade-horizontal flex justify-center items-center min-h-screen p-6">
-  <div class="bg-white border-4 border-gray-700 rounded-xl shadow-2xl p-8 w-full max-w-2xl transform hover:scale-105 transition duration-300 ease-in-out">
-    <h1 class="text-4xl font-serif text-gray-800 mb-6 text-center"><%= @decision.name %></h1>
+  <div class="bg-gray-100 border-4 border-gray-700 rounded-xl shadow-2xl p-8 w-full max-w-2xl transform hover:scale-105 transition duration-300 ease-in-out">
+    <h1 class="text-4xl helvetica-text text-gray-800 mb-6 text-center"><%= @decision.name %></h1>
     
-    <div class="text-lg text-gray-700 space-y-4">
+    <div class="text-lg text-gray-700 helvetica-text space-y-4">
       <p><span class="font-bold">Chapitre :</span> <%= @decision.chapter %></p>
       <p><span class="font-bold">Année :</span> <%= @decision.date %></p>
       <p><span class="font-bold">Résumé :</span> <%= @decision.summary %></p>
     </div>
     
     <div class="mt-8 flex justify-around">
-      <%= link_to "Modifier cette décision", edit_decision_path(@decision), class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
-      <%= link_to "Liste des décisions", decisions_path, class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
+      <%= link_to "Modifier cette décision", edit_decision_path(@decision), class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
+      <%= link_to "Liste des décisions", decisions_path, class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
     </div>
   </div>
 </div>

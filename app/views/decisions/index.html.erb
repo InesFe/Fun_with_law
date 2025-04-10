@@ -1,12 +1,19 @@
-<div class="degrade-horizontal flex justify-center items-center min-h-screen p-6">
-
-  <h1 class="neon text-3xl font-serif bold">Liste des décisions à connaître</h1>
+<div class="degrade-horizontal min-h-screen p-6 flex flex-col items-center">
   
-  <div class="bg-white card-border rounded-xl shadow-2xl p-8 w-full max-w-4xl transform hover:scale-105 transition duration-300 ease-in-out">
+  <div class="fixed z-50" style="top: 1.75rem; left: 3.5rem;">
+    <%= link_to root_path, class: "inline-block p-2" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-6a1 1 0 01-1-1V11H9v9a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" />
+      </svg>
+    <% end %>
+  </div>
+  
+  <h1 class="neon text-4xl helvetica-text font-bold mb-8 text-center">LISTE DES DÉCISIONS</h1>
+  <div class="bg-gray-200 card-border rounded-xl shadow-2xl p-8 w-full max-w-5xl transform hover:scale-105 transition duration-300 ease-in-out">
     
-    <table class="min-w-full bg-white border border-gray-300 rounded-lg">
+    <table class="min-w-full bg-gray-100 border border-gray-300 rounded-lg">
       <thead>
-        <tr class="bg-gray-200">
+        <tr class="bg-gray-300">
           <th class="py-3 px-6 text-left text-gray-700 font-semibold">Nom</th>
           <th class="py-3 px-6 text-left text-gray-700 font-semibold">Chapitre</th>
           <th class="py-3 px-6 text-left text-gray-700 font-semibold">Année</th>
@@ -22,16 +29,19 @@
             <td class="py-2 px-6"><%= decision.chapter %></td>
             <td class="py-2 px-6"><%= decision.date %></td>
             <td class="py-2 px-6"><%= decision.summary %></td>
-            <td class="py-2 px-6"><%= link_to "Voir la décision", decision, class: "text-blue-600 hover:text-blue-800" %></td>
             <td class="py-2 px-6">
-              <%= button_to "Supprimer", decision_path(decision), method: :delete, data: { turbo_confirm: "Etes-vous sûr?"}, class: "text-blue-600 hover:text-blue-800" %>
+              <%= link_to "Voir", decision, class: "text-blue-500 hover:text-blue-700" %>
+            </td>
+            <td class="py-2 px-6">
+              <%= button_to "Supprimer", decision_path(decision), method: :delete, data: { turbo_confirm: "Etes-vous sûr?" }, class: "text-pink-600 hover:text-pink-800" %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-    
-    <%= link_to "Home", root_path, class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
-    <%= link_to "Ajouter une décision", new_decision_path, class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
+
+    <div class="mt-8">
+      <%= link_to "➕ Ajouter une décision", new_decision_path, class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen" %>
+    </div>
   </div>
 </div>
