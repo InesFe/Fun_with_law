@@ -23,9 +23,16 @@
             </div>
 
             <div id="confetti-container"></div>
-            <div class="text-black text-xl helvetica-text">
-                  <p>Score : <%= session[:score] %> sur <%= session[:compteur_questions] %></p>
+            
+            <div class="text-black text-xl helvetica-text font-semibold">
+                  <% if session[:compteur_questions].to_i > 0 %>
+                        <% percentage = (session[:score].to_f / session[:compteur_questions]) * 100 %>
+                        <p> Score : <%= number_with_precision(percentage, precision: 1) %>%</p>
+                  <% else %>
+                        <p>Score : 0%</p>
+                  <% end %>
             </div>
+
       <%= link_to "QUESTION SUIVANTE", jeu_index_path, class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen" %>
       </div>
 </div>

@@ -1,9 +1,13 @@
 class JeuController < ApplicationController
   def index
+    # if params[:chapter].present?
+    # session[:selected_chapter] = params[:chapter]
+    # session[:score] = 0
+    # session[:compteur_questions] = 0
+    # end
+
     if params[:chapter].present?
       session[:selected_chapter] = params[:chapter]
-      session[:score] = 0
-      session[:compteur_questions] = 0
     end
 
     if session[:selected_chapter].present?

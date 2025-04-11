@@ -14,10 +14,10 @@
     <table class="min-w-full bg-gray-100 border border-gray-300 rounded-lg">
       <thead>
         <tr class="bg-gray-300">
-          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Nom</th>
-          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Chapitre</th>
-          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Année</th>
-          <th class="py-3 px-6 text-left text-gray-700 font-semibold">Résumé</th>
+          <th class="py-3 px-6 text-left helvetica-text text-gray-700 font-semibold">Nom</th>
+          <th class="py-3 px-6 text-left helvetica-text text-gray-700 font-semibold">Chapitre</th>
+          <th class="py-3 px-6 text-left helvetica-text text-gray-700 font-semibold">Année</th>
+          <th class="py-3 px-6 text-left helvetica-text text-gray-700 font-semibold">Résumé</th>
           <th class="py-3 px-6 text-left text-gray-700 font-semibold"></th>
           <th class="py-3 px-6 text-left text-gray-700 font-semibold"></th>
         </tr>
@@ -25,10 +25,10 @@
       <tbody>
         <% @decisions.each do |decision| %>
           <tr class="border-t border-gray-300 hover:bg-gray-50">
-            <td class="py-2 px-6"><%= decision.name %></td>
+            <td class="py-2 px-6"><%= truncate(decision.name, length: 25) %></td>
             <td class="py-2 px-6"><%= decision.chapter %></td>
             <td class="py-2 px-6"><%= decision.date %></td>
-            <td class="py-2 px-6"><%= decision.summary %></td>
+            <td class="py-2 px-6"><%= truncate(decision.summary, length: 25) %></td>
             <td class="py-2 px-6">
               <%= link_to "Voir", decision, class: "text-blue-500 hover:text-blue-700" %>
             </td>
@@ -41,7 +41,7 @@
     </table>
 
     <div class="mt-8">
-      <%= link_to "➕ Ajouter une décision", new_decision_path, class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen" %>
+      <%= link_to "➕ Ajouter une décision", new_decision_path, class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen" %>
     </div>
   </div>
 </div>
