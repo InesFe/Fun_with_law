@@ -30,7 +30,8 @@ class DecisionsController < ApplicationController
   end
 
   def index
-    @decisions = Decision.all
+    # @decisions = Decision.all
+    @decisions = Decision.order(created_at: :asc).page(params[:page]).per(7)
   end
 
   def destroy

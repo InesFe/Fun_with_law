@@ -25,7 +25,7 @@
       <tbody>
         <% @decisions.each do |decision| %>
           <tr class="border-t border-gray-300 hover:bg-gray-50">
-            <td class="py-2 px-6"><%= truncate(decision.name, length: 25) %></td>
+            <td class="py-2 px-6"><%= truncate(decision.name, length: 36) %></td>
             <td class="py-2 px-6"><%= decision.chapter %></td>
             <td class="py-2 px-6"><%= decision.date %></td>
             <td class="py-2 px-6"><%= truncate(decision.summary, length: 25) %></td>
@@ -39,6 +39,11 @@
         <% end %>
       </tbody>
     </table>
+    
+    <div class="flex justify-center mt-6">
+      <%= paginate @decisions %>
+    </div>
+
 
     <div class="mt-8">
       <%= link_to "➕ Ajouter une décision", new_decision_path, class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen" %>

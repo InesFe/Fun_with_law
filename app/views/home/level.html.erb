@@ -17,7 +17,7 @@
   <div class="space-y-4 text-center">
     <h1 class="neon helvetica-text text-3xl font-serif bold">Avec quel chapitre voulez-vous jouer ?</h1>
       <% Decision.distinct.pluck(:chapter).each do |chapter| %>
-        <%= link_to chapter, jeu_index_path(chapter: chapter), class: "bg-surfgreen helvetica-text text-black font-serif py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
+        <%= link_to chapter, jeu_index_path(chapter: chapter), class: "bg-surfgreen helvetica-text text-black font-semibold py-2 px-4 rounded-2xl hover:bg-darksurfgreen inline-block" %>
       <% end %>
   
   <div class="mt-4">
